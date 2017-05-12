@@ -1,0 +1,21 @@
+version: '2'
+
+services:
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "28017:28017"
+
+  # nginx:
+  #   image: nginx:latest
+  #   ports:
+  #     - "80:80"
+
+  server:
+    image: kamataryo/websocket-iot-server:latest
+    depends_on:
+      - "mongo"
+
+  client:
+    image: kamataryo/websocket-iot-client:latest
